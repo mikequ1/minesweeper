@@ -1,0 +1,8 @@
+import package.javax;
+
+public class MinesweeperGUI extends Frame {
+    public MinesweeperGUI() {
+        JFrame frame = new JFrame("Minesweeper");
+        
+    }
+}
