@@ -1,5 +1,11 @@
 #BlueJ class context
 comment0.target=MinesweeperGUI
-comment1.params=spaces
-comment1.target=MinesweeperGUI(Space[])
-numComments=2
+comment1.params=spaces\ game
+comment1.target=MinesweeperGUI(Space[],\ GameLogic)
+comment2.params=button\ space
+comment2.target=void\ open(javax.swing.JButton,\ Space)
+comment3.params=
+comment3.target=void\ winGame()
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5

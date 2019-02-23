@@ -1,16 +1,7 @@
-/**
- * Space
- * @author Diego Brown
- * @version
- */
-
-//imports
-//====================================================================================================================================================
-
 //classes
 public class Space {
     //field variables
-    boolean isMine, isFlagged;
+    boolean isMine, isFlagged, isCovered;
     int xpos, ypos, spaceID, adjacentMines;
     //====================================================================================================================================================
     
@@ -18,11 +9,12 @@ public class Space {
     public Space (int xpos, int ypos, int spaceID) {
         isMine = false;
         isFlagged = false;
+        isCovered = true;
         adjacentMines = 0;
         this.xpos = xpos;
         this.ypos = ypos;
         this.spaceID = spaceID;
-        System.out.println("Space " + spaceID + " created at (" + xpos + "," + ypos + ").");
+        //System.out.println("Space " + spaceID + " created at (" + xpos + "," + ypos + ").");
     }
     //====================================================================================================================================================
 
@@ -56,6 +48,10 @@ public class Space {
     public int getSpaceID() {
         return spaceID;
     }
+
+    public String getSpaceIDString() {
+        return this.getSpaceID() + "";
+    }
     
     public int getAdjacentBombs() {
         return adjacentMines;
@@ -65,7 +61,7 @@ public class Space {
     //mutator methods
     public void makeMine() {
         isMine = true;
-        System.out.println("Space " + spaceID + " converted to mine.");
+        //System.out.println("Space " + spaceID + " converted to mine.");
     }
     
     public void flag() {
@@ -74,7 +70,23 @@ public class Space {
     
     public void setAdjacentMines (int adjacentMines) {
         this.adjacentMines = adjacentMines;
-        System.out.println("Space " + spaceID + " assigned " + this.adjacentMines + " adjacent mine(s).");
+        //System.out.println("Space " + spaceID + " assigned " + this.adjacentMines + " adjacent mine(s).");
+    }
+    
+    public String getAdjacentMinesString() {
+        return adjacentMines + "";
+    }
+    
+    public void uncover() {
+        isCovered = false;
+    }
+    
+    public boolean getCovered() {
+        return isCovered;
+    }
+    
+    public int getAdjacentMines() {
+        return adjacentMines;
     }
     
     public String toString() {
