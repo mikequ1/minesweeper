@@ -1,11 +1,9 @@
 #BlueJ class context
 comment0.target=Minesweeper
 comment1.params=
-comment1.target=Minesweeper()
-comment2.params=
-comment2.target=void\ drawMenu()
-comment3.params=e
-comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment4.params=args
-comment4.target=void\ main(java.lang.String[])
-numComments=5
+comment1.target=void\ drawMenu()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

@@ -16,15 +16,8 @@ public class Minesweeper extends JFrame implements ActionListener {
     JTextField heightField = new JTextField("Height",2);
     JTextField mineField = new JTextField("Mines",3);
     
-    Color green = new Color(0,100,0);
-    Color orange = new Color(255,120,0);
-    
-    Minesweeper minesweeper;
-    
-    public Minesweeper() {
-        drawMenu();
-    }
-    
+    GameLogic game;
+
     public void drawMenu() {
         //setting the icon
         toolkit = Toolkit.getDefaultToolkit();
@@ -48,7 +41,7 @@ public class Minesweeper extends JFrame implements ActionListener {
         beginner.setActionCommand("beginner");
         beginner.setToolTipText("9x9, 10 mines.");
         beginner.setOpaque(true);
-        beginner.setForeground(green);
+        beginner.setForeground(Color.GREEN);
         beginner.addActionListener(this);
 
         //intermediate button
@@ -57,7 +50,7 @@ public class Minesweeper extends JFrame implements ActionListener {
         intermediate.setActionCommand("intermediate");
         intermediate.setToolTipText("16x16, 40 mines.");
         intermediate.setOpaque(true);
-        intermediate.setForeground(orange);
+        intermediate.setForeground(Color.ORANGE);
         intermediate.addActionListener(this);
 
         //expert button
@@ -111,16 +104,16 @@ public class Minesweeper extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if ("beginner".equals(e.getActionCommand())) {
-            GameLogic game = new GameLogic(9,9,10);
+            game = new GameLogic(9,9,10);
         }
         else if ("intermediate".equals(e.getActionCommand())) {
-            GameLogic game = new GameLogic(16,16,40);
+            game = new GameLogic(16,16,40);
         }
         else if ("expert".equals(e.getActionCommand())) {
-            GameLogic game = new GameLogic(30,16,99);
+            game = new GameLogic(30,16,99);
         }
         else if ("submit".equals(e.getActionCommand())) {
-            GameLogic game = new GameLogic(Integer.parseInt(widthField.getText()),
+            game = new GameLogic(Integer.parseInt(widthField.getText()),
                 Integer.parseInt(heightField.getText()),Integer.parseInt(mineField.getText()));
         }
         frame.setVisible(false);
@@ -129,6 +122,6 @@ public class Minesweeper extends JFrame implements ActionListener {
 
     public static void main (String[] args) {
         Minesweeper minesweeper = new Minesweeper();
-        //minesweeper.drawMenu();
+        minesweeper.drawMenu();
     }
 }

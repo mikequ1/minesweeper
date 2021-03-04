@@ -1,29 +1,25 @@
 import java.util.Random;
 
 public class GameLogic {
-    static boolean firstClick = true;
-    static boolean hasWon = false;
-    private int width, height, mines;
-    private int spaceID = 0;
+    private static int width, height, mines;
+    private static int spaceID = 0;
     private Space spaces[];
     private MinesweeperGUI board;
 
     public GameLogic (int width, int height, int mines) {
         resetSpaceID();
-        firstClick = true;
-        hasWon = false;
         this.width = width;
         this.height = height;
         this.mines = mines;
         spaces = new Space[width * height];
         createGrid();
-        //assignGrid();
-        //assignNeighbors();
+        assignGrid();
+        assignNeighbors();
         board = new MinesweeperGUI(spaces, this);
     }
 
     //private methods
-    public void createGrid() {
+    private void createGrid() {
         //System.out.println("==================================================");
         for (int y=1; y<height+1; y++) {
             for (int x=1; x<width+1; x++) {
@@ -34,14 +30,13 @@ public class GameLogic {
         //System.out.println("==================================================");
     }
 
-    public void assignGrid(int firstIndex) {
+    private void assignGrid() {
         Random rand = new Random();        
         int count = mines;
         do {
+            
             int index = rand.nextInt(width * height);
-            if (spaces[index].isMine() == false && index!=firstIndex && index!=firstIndex-width-1 && index!=firstIndex-width &&
-            index!=firstIndex-width+1 && index!=firstIndex-1 && index!=firstIndex+1 && index!=firstIndex+width-1
-             && index!=firstIndex+width && index!=firstIndex+width+1) {
+            if (spaces[index].isMine() == false) {
                 spaces[index].makeMine();
                 count--;
             }
@@ -137,7 +132,7 @@ public class GameLogic {
         return adjacent;
     }
     
-    public void assignNeighbors() {
+    private void assignNeighbors() {
         for (int i=0; i<width*height; i++) {
             spaces[i].setAdjacentMines(getNeighbors(spaces[i]));
         }
@@ -154,15 +149,16 @@ public class GameLogic {
         return spaces[spaceID];
     }
     
-    public int getWidth() {
+    public static int getWidth() {
         return width;
     }
     
-    public int getHeight() {
+    public static int getHeight() {
         return height;
     }
     
-    public int getMines() {
+    public static int getMines() {
         return mines;
     }
+
 }
